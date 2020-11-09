@@ -7,7 +7,7 @@ class Agent():
 	def __init__(self, start, end, decay, numActions, device):
 		self.start = start
 		self.end = end
-		self. decay = decay
+		self.decay = decay
 		self.numActions = numActions
 		self.device = device
 		self.currentStep = 0
@@ -17,15 +17,14 @@ class Agent():
 	
 	def selectAction(self, state, policyNet):
 		rate = self.__getExplorationRate()
-		# print("exploration rate = ", rate)
+		print("exploration rate = ", rate)
 
 		self.currentStep += 1
 		if rate > random.random():
-			action = random.randrange(0, self.numActions)
-			return torch.tensor([action]).to(self.device)
+			return torch.randint(0, numActions, (1,1)).to(self.device)
 		else:
 			with torch.no_grad():
-				return policyNet(state).argmax(dim=1).to(self.device)
+				return policyNet(state).argmax(dim=1).reshape(-1, 1).to(self.device)
 
 
 def main():
@@ -33,16 +32,9 @@ def main():
 		torch.nn.Linear(1, 4)
 	)
 	state = torch.rand([1, 1])
-	agent = Agent(0.1, 0.01, 0.01, 4, "cpu")
+	agent = Agent(0.2, 0.01, 0.01, 4, "cpu")
 	action = agent.selectAction(state, policyNet)
-	print(action)
+	print(action.shape)
 
 if __name__ == '__main__':
 	main()
-
-# start
-# end
-# decay
-# currentStep
-# get Exploration rate()
-# select action()

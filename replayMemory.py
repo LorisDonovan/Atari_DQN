@@ -20,6 +20,9 @@ class ReplayMemory():
 			self.memory[self.pushCount % self.capacity] = experience
 		self.pushCount += 1
 
+	def getMemorySize(self):
+		return len(self.memory)
+
 	def sample(self, batchSize):
 		return random.sample(self.memory, batchSize)
 
@@ -48,4 +51,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-

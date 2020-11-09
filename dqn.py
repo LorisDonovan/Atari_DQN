@@ -17,14 +17,13 @@ class DQN(nn.Module):
 		x = self.out(x)
 		return x
 
-
 def main():
 	net = DQN(4)
 
 	image = torch.rand(32, 4, 84, 84)
 	output = net(image)
-
 	print(output.shape)
+
 
 if __name__ == '__main__':
 	main()
