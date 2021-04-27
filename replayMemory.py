@@ -33,8 +33,8 @@ class ReplayMemory():
 def main():
 	capacity = 4
 	batchSize = 2
-	mem = ReplayMemory(capacity)
-	exp = Experience(1, 2, 3, 4)
+	mem  = ReplayMemory(capacity)
+	exp  = Experience(1, 2, 3, 4)
 	exp1 = Experience(5, 6, 7, 8)
 	exp2 = Experience(9, 10, 11, 12)
 	exp3 = Experience(14, 15, 16, 17)
