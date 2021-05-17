@@ -1,2 +1,2 @@
 # Atari_DQN
-Deep Q-Learning for Atari games
+(WIP) Deep Q-Learning for Atari games
